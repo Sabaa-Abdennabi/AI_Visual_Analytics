@@ -1,7 +1,7 @@
 ## orchestrator
 # webscraper/scraper.py
 from renderer import render_page
-from parser import extract_elements
+from custom_parser import extract_elements
 
 def scrape(url):
     print("bch nabdou rendering")
