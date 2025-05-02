@@ -1,0 +1,189 @@
+[
+  {
+    "element": "H3.page-title",
+    "duration": 693,
+    "timestamp": 1745878491787,
+    "width": 976,
+    "height": 52,
+    "color": "rgb(61, 61, 61)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 728,
+    "Y": 565
+  },
+  {
+    "element": "H3.page-title",
+    "duration": 1914,
+    "timestamp": 1745878493008,
+    "width": 976,
+    "height": 52,
+    "color": "rgb(61, 61, 61)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 748,
+    "Y": 566
+  },
+  {
+    "element": "H3.page-title",
+    "duration": 215,
+    "timestamp": 1745878493792,
+    "width": 976,
+    "height": 52,
+    "color": "rgb(61, 61, 61)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 789,
+    "Y": 559
+  },
+  {
+    "element": "IMG.cdn-image.lazyloaded",
+    "duration": 221,
+    "timestamp": 1745878505847,
+    "width": 325.32501220703125,
+    "height": 250,
+    "color": "rgb(61, 61, 61)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 479,
+    "Y": 1633
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 206,
+    "timestamp": 1745878508803,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 216,
+    "timestamp": 1745878510568,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 215,
+    "timestamp": 1745878511469,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 215,
+    "timestamp": 1745878512583,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 220,
+    "timestamp": 1745878514239,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 223,
+    "timestamp": 1745878516891,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 224,
+    "timestamp": 1745878517865,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 212,
+    "timestamp": 1745878519284,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button.is-next",
+    "duration": 221,
+    "timestamp": 1745878520053,
+    "width": 50,
+    "height": 50,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(24, 24, 27, 0.5)",
+    "X": 1495,
+    "Y": 1737
+  },
+  {
+    "element": "BUTTON.f-button",
+    "duration": 223,
+    "timestamp": 1745878523288,
+    "width": 46,
+    "height": 46,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgba(90, 90, 93, 0.65)",
+    "X": 1499,
+    "Y": 1408
+  },
+  {
+    "element": "H1.",
+    "duration": 0,
+    "timestamp": 1745878526415,
+    "width": 271.8374938964844,
+    "height": 21.600000381469727,
+    "color": "rgb(51, 51, 51)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 1089,
+    "Y": 2340
+  },
+  {
+    "element": "A#dropdownMenuButton1.btn.btn-primary.d-block.mt-4.dropdown-toggle.w-100",
+    "duration": 215,
+    "timestamp": 1745878541416,
+    "width": 271.8374938964844,
+    "height": 39.20000076293945,
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgb(174, 0, 0)",
+    "X": 1062,
+    "Y": 2524
+  },
+  {
+    "element": "A.dropdown-item",
+    "duration": 212,
+    "timestamp": 1745878543570,
+    "width": 430.625,
+    "height": 32,
+    "color": "rgb(30, 33, 37)",
+    "backgroundColor": "rgb(233, 236, 239)",
+    "X": 1058,
+    "Y": 2562
+  }
+]

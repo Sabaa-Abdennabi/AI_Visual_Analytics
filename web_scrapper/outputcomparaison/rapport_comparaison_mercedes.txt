@@ -1,0 +1,34 @@
+
+📊 CLICKS : 28.57% match (2/7)
+📊 SECTIONS : 25.00% match (4/16)
+
+✅ Clicks trouvés :
+ - A#dropdownMenuButton1.btn.btn-primary.d-block.dropdown-toggle.mt-4.w-100
+ - A.dropdown-item
+
+❌ Clicks non trouvés :
+ - BUTTON.f-button
+ - BUTTON.f-button.is-next
+ - H1.
+ - H3.page-title
+ - IMG.cdn-image.lazyloaded
+
+✅ Sections vues trouvées :
+ - bloc-title
+ - breadcrumbs-wrapper
+ - social-icons-widget
+ - versions-details
+
+❌ Sections vues non trouvées :
+ - addthis_sharing_toolbox
+ - ban
+ - bandeau
+ - bandeau_container
+ - beacon_1eecabb38c
+ - beacon_2c84a177c6
+ - clearer
+ - disqus-container
+ - rv rv-1
+ - rv rv-43
+ - square
+ - versions-img
