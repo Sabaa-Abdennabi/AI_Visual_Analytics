@@ -5,7 +5,7 @@ from custom_parser import extract_elements
 
 def scrape(url):
     print("bch nabdou rendering")
-    browser, page = render_page(url, headless=False, delay=4)
+    browser, page = render_page(url, headless=False, delay=5)
     print("kamalna rendering")
     try:
         print("bch nabdou l extraction")

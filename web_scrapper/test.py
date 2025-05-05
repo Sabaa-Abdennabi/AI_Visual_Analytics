@@ -8,7 +8,7 @@ data = scrape(url)
 
 print(json.dumps(data[:5], indent=2))  # print first 5 elements
 # Save the data to a text file
-with open("outputs/scraping_outputmercedes.json", "w", encoding="utf-8") as file:
+with open("outputs/scraping_outputmercedes9.json", "w", encoding="utf-8") as file:
     json.dump(data, file, indent=2)
 
 print("Data saved to output.txt")
