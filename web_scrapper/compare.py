@@ -59,7 +59,7 @@ def compare_elements(clicks_file, sections_file, scraping_file):
 
     output_dir = "outputcomparaison"
     os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, "rapport_comparaison_enhanced9.txt")
+    output_file = os.path.join(output_dir, "rapport_comparaison_shein.txt")
 
     with open(output_file, 'w', encoding='utf-8') as out:
         def write_and_print(line):
@@ -95,7 +95,7 @@ def compare_elements(clicks_file, sections_file, scraping_file):
 # Utilisation
 if __name__ == "__main__":
     compare_elements(
-        clicks_file="clickEvents.json",
-        sections_file="sectionViewed.json",
-        scraping_file="outputs/scraping_outputmercedes9.json"
+        clicks_file="clicksShein.json",
+        sections_file="sectionsViewedShein.json",
+        scraping_file="outputs/scraping_shein.json"
     )

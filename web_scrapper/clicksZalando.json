@@ -1,0 +1,101 @@
+[
+  {
+    "element": "IMG.voFjEy.lystZ1.m3OCL3._2Pvyxl.JT3_zV.EKabf7.mo6ZnF._1RurXL.mo6ZnF._7ZONEy",
+    "duration": 57,
+    "timestamp": 1745854388675,
+    "width": 85.33333587646484,
+    "height": 123.30208587646484,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 82,
+    "Y": 551
+  },
+  {
+    "element": "IMG.voFjEy.lystZ1.m3OCL3._2Pvyxl.JT3_zV.EKabf7.mo6ZnF._1RurXL.mo6ZnF._7ZONEy",
+    "duration": 92,
+    "timestamp": 1745854390156,
+    "width": 1280,
+    "height": 1848.885498046875,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 256,
+    "Y": 551
+  },
+  {
+    "element": "svg",
+    "duration": 59,
+    "timestamp": 1745854391804,
+    "width": 24,
+    "height": 24,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 1259,
+    "Y": 226
+  },
+  {
+    "element": "SPAN.voFjEy.lystZ1.m3OCL3.HlZ_Tf.fI2b6X",
+    "duration": 91,
+    "timestamp": 1745854397454,
+    "width": 17.9375,
+    "height": 20,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 1189,
+    "Y": 589
+  },
+  {
+    "element": "svg",
+    "duration": 0,
+    "timestamp": 1745854418190,
+    "width": 24,
+    "height": 24,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 1210,
+    "Y": 3735
+  },
+  {
+    "element": "svg",
+    "duration": 56,
+    "timestamp": 1745854420013,
+    "width": 24,
+    "height": 24,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 1209,
+    "Y": 3737
+  },
+  {
+    "element": "svg",
+    "duration": 75,
+    "timestamp": 1745854422005,
+    "width": 24,
+    "height": 24,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 1209,
+    "Y": 3737
+  },
+  {
+    "element": "HTML.rendering-engine.re-main-4103.release-main-8949.js-focus-visible",
+    "duration": 1422,
+    "timestamp": 1745854425883,
+    "width": 1264.666748046875,
+    "height": 7191.02099609375,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 1279,
+    "Y": 21
+  },
+  {
+    "element": "SPAN._ZDS_REF_SCOPE_._2lVSo9",
+    "duration": 83,
+    "timestamp": 1745854432671,
+    "width": 41.90625,
+    "height": 20.666667938232422,
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "X": 370,
+    "Y": 236
+  }
+]

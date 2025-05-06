@@ -1,0 +1,91 @@
+
+📊 CLICKS : 33.33% match (1/3)
+📊 SECTIONS : 98.67% match (74/75)
+
+✅ Clicks trouvés :
+ - DIV.product-list-v2
+
+❌ Clicks non trouvés :
+ - A.bs-nav__cate-link.hover
+ - SPAN.
+
+✅ Sections vues trouvées :
+ - S-product-card__wrapper-bottom
+ - bottom-wrapper__labels
+ - bottom-wrapper__price-wrapper
+ - bread-crumb fsp-element
+ - bs-c-header-robot__wrap
+ - bs-c-swich__wrap
+ - bs-nav__arrow
+ - bs-nav__cate first-cate
+ - bs-nav__content
+ - bs-nav__content-inner
+ - bsc-header-logo
+ - bsc-mini-cart__trigger j-bsc-mini-cart__trigger
+ - bsc-search-box
+ - bsc-user-container
+ - buy-box__container
+ - buy-box__icon
+ - buy-box__label
+ - cloud-tag-icon cloud-tag-icon__view-new
+ - cloud-tags
+ - common-header__banner
+ - common-header__wrap
+ - common-header__wrap-center
+ - common-header__wrap-left
+ - common-header__wrap-right
+ - crop-image-container
+ - crop-image-container loading
+ - crop-image-container__mask
+ - delivery-hot-zone
+ - delivery-words-title
+ - delivery-words__wrap
+ - header-icon
+ - header-icon not-fsp-element
+ - j-switch-language-guide bs-c-swich__wrap-guide
+ - normal-price-ctn__prices
+ - normal-price-ctn__sale-price-wrapper
+ - prices-info__suggested-sale-price normal-price-ctn__suggested-price
+ - product-card multiple-row-card j-expose__product-item hover-effect product-list__item product-list__item-new
+ - product-card__auto-label product-card__auto-label_horse
+ - product-card__auto-rank
+ - product-card__auto-wrap
+ - product-card__bottom-wrapper
+ - product-card__color-count
+ - product-card__color-item lazyload product-card__color-item
+ - product-card__color-set product-card__color-set_vertical
+ - product-card__color-set-wrapper
+ - product-card__delivery-words
+ - product-card__goods-title-container
+ - product-card__horse-race-container
+ - product-card__label-container
+ - product-card__price
+ - product-card__price-suggested
+ - product-card__prices-bottom
+ - product-card__prices-info fsp-element
+ - product-card__selling-proposition-rank product-card__selling-proposition-ranknew can-click
+ - product-card__top-wrapper
+ - product-list-v2__header scrollfix-sub
+ - rank-main
+ - search-banner-card
+ - search-box
+ - side-filter__item-content-two
+ - side-filter__item-content-two_img
+ - sort-bar sort-bar__70
+ - sort-bar__dropdown not-fsp-element
+ - sort-bar__inner
+ - sui-breadcrumb
+ - sui-input
+ - sui-input__prefix
+ - sui-input__suffix
+ - sui-select
+ - sui-select__trigger sui-select__trigger-readonly
+ - tag-text__cntent
+ - top-info fsp-element top-info__view-new
+ - view-new view-new__more
+ - view-new__container
+
+❌ Sections vues non trouvées :
+ - product-card__over-hidden
+
+🔍 Bonus: Sections matched via `sectionSignature` only :

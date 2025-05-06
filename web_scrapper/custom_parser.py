@@ -3,17 +3,29 @@ import re
 # Clickability detection
 def is_clickable(e):
     tag = e.evaluate("el => el.tagName.toLowerCase()")
-    has_click = e.get_attribute("onclick") is not None
+    has_click_attr = e.get_attribute("onclick") is not None
     role = (e.get_attribute("role") or "").lower()
-    cursor_pointer = "cursor:pointer" in (e.get_attribute("style") or "")
-    has_tabindex = e.get_attribute("tabindex") is not None
+    style = e.get_attribute("style") or ""
+    classes = e.get_attribute("class") or ""
+    tabindex = e.get_attribute("tabindex")
+    aria_attrs = [
+        e.get_attribute("aria-role"),
+        e.get_attribute("aria-pressed"),
+        e.get_attribute("aria-expanded"),
+        e.get_attribute("aria-controls")
+    ]
+
     return (
         tag in ["a", "button", "input", "label"]
-        or role in ["button", "link"]
-        or has_click
-        or cursor_pointer
-        or has_tabindex
+        or role in ["button", "link", "menuitem", "option"]
+        or any(a is not None for a in aria_attrs)
+        or "cursor:pointer" in style
+        or has_click_attr
+        or tabindex == "0"
+        or "clickable" in classes
+        or any("data-" in attr for attr in e.evaluate("el => Object.keys(el.attributes).map(k => el.attributes[k].name)"))
     )
+
 
 def get_element_xpath(el):
     return el.evaluate("""
@@ -115,7 +127,7 @@ def get_element_xpath(el):
 #             continue
 
 #     return result
-
+## HEDHI TEKHDEM CV MCH KHAYEB
 def extract_elements(page):
     # Scroll to load dynamic content
     for _ in range(6):
@@ -171,32 +183,7 @@ def extract_elements(page):
                 raw_text
             )
 
-            # Detect clickability
-            def is_clickable(el_handle):
-                try:
-                    role = el_handle.get_attribute("role") or ""
-                    tag = el_handle.evaluate("e => e.tagName.toLowerCase()")
-                    return tag in ["a", "button"] or "click" in role or el_handle.get_attribute("onclick")
-                except:
-                    return False
-
             clickable_selector = f"{tag_upper}{'#' + el_id if el_id else ''}{sorted_classes}"
-            found_clickable = is_clickable(el)
-
-            # Go up 5 ancestors to find a clickable container
-            if not found_clickable:
-                parent = el
-                for _ in range(5):
-                    parent = parent.evaluate_handle("e => e.parentElement")
-                    if parent is None:
-                        break
-                    if is_clickable(parent):
-                        tag = parent.evaluate("e => e.tagName")
-                        pid = parent.get_attribute("id") or ""
-                        pclass = parent.get_attribute("class") or ""
-                        pclass_sorted = "." + ".".join(sorted(pclass.split())) if pclass else ""
-                        clickable_selector = f"{tag}{'#' + pid if pid else ''}{pclass_sorted}"
-                        break
 
             result.append({
                 "tag": tag_lower,
