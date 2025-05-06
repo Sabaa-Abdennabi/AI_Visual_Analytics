@@ -1,13 +1,7 @@
-# main.py
-from scraper import scrape
-import json
+import pandas as pd
 
-url = "https://crk.tn/categorie-produit/homme/sacs-homme/"
-data = scrape(url)
-
-print(json.dumps(data[:5], indent=2))  # print first 5 elements
-# Save the data to a text file
-with open("outputs/output_chat2.txt", "w", encoding="utf-8") as file:
-    json.dump(data, file, indent=2)
-
-print("Data saved to output.txt")
+df = pd.read_parquet("./scraped_parquet/1c2cc07030.parquet")
+print(df.head())  # Show the first 5 rows
+print(df.columns)       # List all column names
+print(df.shape)         # (rows, columns)
+print(df.sample(10))    # Random sample
