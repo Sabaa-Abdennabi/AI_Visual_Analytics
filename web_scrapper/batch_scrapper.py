@@ -2,6 +2,9 @@ import pandas as pd
 from multiprocessing import Pool
 from scraper import scrape
 
+## run this script in order to scrappe the urls in the dataset 
+## ajust the 3 number to the cores number of ur cpu -1  
+## ater this run the merge.py folder to merge the session data with the scraped data
 def process_url(url):
     try:
         scrape(url)
