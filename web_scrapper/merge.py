@@ -6,6 +6,6 @@ from merge_parquet import enrich_parquet_with_session_data
 ## this script is used to merge the session data with the scraped data
 ## the session data is in the urls.csv file, and the scraped data is in the scraped_parquet folder
 
-session_df = pd.read_csv("urls.csv")
+session_df = pd.read_csv("urls_removed.csv")
 for _, session in session_df.iterrows():
     enrich_parquet_with_session_data(session)

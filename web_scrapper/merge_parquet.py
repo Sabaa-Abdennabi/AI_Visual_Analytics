@@ -24,17 +24,20 @@ def enrich_parquet_with_session_data(session: pd.Series, parquet_dir="scraped_pa
     # Parse viewed sections
     viewed_dict = json.loads(session["Sections Viewed"])
 
+        # Safe get_view_data function
     def get_view_data(row):
-        matched = False
-        duration = 0
-        for key in viewed_dict:
-            if key in row["sectionViewedElement"]:
-                matched = True
-                duration = viewed_dict[key]
-                break
-        return pd.Series([matched, duration])
+        try:
+            for key, duration in viewed_dict.items():
+                if key in str(row.get("sectionViewedElement", "")):
+                    return True, duration
+            return False, 0
+        except Exception:
+            return False, 0
 
-    dom_df[["was_viewed", "view_duration"]] = dom_df.apply(get_view_data, axis=1)
+    # Apply and expand manually
+    view_data = dom_df.apply(get_view_data, axis=1)
+    view_data_df = pd.DataFrame(view_data.tolist(), columns=["was_viewed", "view_duration"])
+    dom_df = pd.concat([dom_df, view_data_df], axis=1)
 
     # Parse clicked elements
     try:
@@ -44,15 +47,19 @@ def enrich_parquet_with_session_data(session: pd.Series, parquet_dir="scraped_pa
         clicked_selectors = []
 
     def get_clicked(row):
-        for sel in clicked_selectors:
-            if isinstance(row["clickElement"], str) and sel in row["clickElement"]:
-                return True
-        return False
+        try:
+            for sel in clicked_selectors:
+                if isinstance(row.get("clickElement", ""), str) and sel in row["clickElement"]:
+                    return True
+            return False
+        except Exception:
+            return False
+
 
     dom_df["was_clicked"] = dom_df.apply(get_clicked, axis=1)
 
     # Add time on site
-    dom_df["time_on_site"] = pd.to_timedelta(session['TotalTime ( H:M:S)']).total_seconds()
+    dom_df["time_on_site"] = pd.to_timedelta(session['TotalTime ( H:M:S)']).total_seconds() if isinstance(session['TotalTime ( H:M:S)'], str) else None
 
     # Add session metadata
     dom_df["session_id"] = session["SessionId"]
