@@ -1,2 +1,7 @@
 __pycache__
 venv/
+.env
+web_scrapper/extrait.csv
+web_scrapper/scraped_parquet
+web_scrapper/extraire_dataset.py 
+web_scrapper/readParquet.py
