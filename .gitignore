@@ -5,3 +5,4 @@ web_scrapper/extrait.csv
 web_scrapper/readParquet.py
 web_scrapper/scraped_parquet
 web_scrapper/merged_parquet
+.env
