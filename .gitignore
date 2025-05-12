@@ -2,3 +2,6 @@ __pycache__
 venv/
 .env
 web_scrapper/split.py
+web_scrapper/merged_parquet
+web_scrapper/scraped_parquet
+last_urls.csv
