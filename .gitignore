@@ -1,7 +1,12 @@
 __pycache__
 venv/
+web_scrapper/extraire_dataset.py
+web_scrapper/extrait.csv
+web_scrapper/readParquet.py
+web_scrapper/scraped_parquet
+web_scrapper/merged_parquet
 .env
-web_scrapper/split.py
+
 web_scrapper/merged_parquet
 web_scrapper/scraped_parquet
 last_urls.csv
