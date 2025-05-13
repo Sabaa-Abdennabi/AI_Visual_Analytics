@@ -12,7 +12,7 @@ def process_url(url):
         print(f"❌ Error scraping {url}: {e}")
 
 if __name__ == "__main__":
-    df = pd.read_csv("urls.csv")
+    df = pd.read_csv("extrait.csv")
     urls = df["PageURL"].dropna().unique().tolist()
 
     with Pool(3) as pool:
