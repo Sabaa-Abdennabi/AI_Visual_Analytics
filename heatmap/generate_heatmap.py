@@ -57,9 +57,8 @@ def generate_heatmap(url: str, elements_df: pd.DataFrame, output_path: str = "sm
     print(f"🔥 Smooth heatmap saved to {output_path}")
 
 
-# Example usage:
 if __name__ == "__main__":
-    # Load or build your elements dataframe
+    # hottou lahnee esm l .parquet file (nhezzou mel dossier merged_parquet)
     df = pd.read_parquet("../web_scrapper/merged_parquet/0ca2705800.parquet")
-    generate_heatmap("https://www.automobile.tn/fr/neuf/jaguar", df)
+    generate_heatmap(df["page_url"].iloc[0], df)
     pass
