@@ -6,7 +6,7 @@ web_scrapper/readParquet.py
 web_scrapper/scraped_parquet
 web_scrapper/merged_parquet
 .env
-
+.venv
 web_scrapper/merged_parquet
 web_scrapper/scraped_parquet
 last_urls.csv
