@@ -7,7 +7,7 @@ def enrich_parquet_with_session_data(session: pd.Series, parquet_dir="scraped_pa
     """
     Enriches the DOM .parquet file of a URL with interaction data from a user session.
     Adds: was_viewed, view_duration, was_clicked, time_on_site, session_id, page_url.
-    Saves result to `output_dir` using the same hashed name.
+    Saves result to output_dir using the same hashed name.
     """
     url = session["PageURL"]
     url_hash = hashlib.md5(url.encode()).hexdigest()[:10]
