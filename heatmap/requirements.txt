@@ -1,6 +1,0 @@
-pandas
-selenium
-matplotlib
-Pillow
-scipy
-pyarrow
