@@ -19,4 +19,4 @@ def convert_parquet_to_csv(parquet_file_path, csv_file_path):
 
 # Example usage
 # Replace 'input.parquet' and 'output.csv' with your file paths
-convert_parquet_to_csv('./merged_parquet/ffe51de7af.parquet', 'test.csv')
+convert_parquet_to_csv('./merged_parquet/e2888a5a45.parquet', 'test.csv')

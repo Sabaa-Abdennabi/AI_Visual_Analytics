@@ -11,3 +11,4 @@ web_scrapper/split.py
 web_scrapper/merged_parquet
 web_scrapper/scraped_parquet
 last_urls.csv
+Dashboard_front/node_modules

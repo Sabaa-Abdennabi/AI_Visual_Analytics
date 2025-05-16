@@ -58,7 +58,8 @@ def generate_heatmap(url: str, elements_df: pd.DataFrame, output_path: str = "sm
 
 
 if __name__ == "__main__":
-    # hottou lahnee esm l .parquet file (nhezzou mel dossier merged_parquet)
-    df = pd.read_parquet("../web_scrapper/merged_parquet/0ca2705800.parquet")
-    generate_heatmap(df["page_url"].iloc[0], df)
-    pass
+    df = pd.read_parquet("../web_scrapper/merged_parquet/e2888a5a45.parquet")
+    if "page_url" not in df.columns or df.empty or df["page_url"].isnull().all():
+        print("❌ DataFrame is empty or 'page_url' column is missing/empty.")
+    else:
+        generate_heatmap(df["page_url"].iloc[0], df)
