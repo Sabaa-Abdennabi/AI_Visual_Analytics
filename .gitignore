@@ -10,3 +10,5 @@ web_scrapper/merged_parquet
 web_scrapper/merged_parquet
 web_scrapper/scraped_parquet
 last_urls.csv
+model_click.pkl
+model_view.pkl

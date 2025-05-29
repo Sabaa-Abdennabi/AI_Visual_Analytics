@@ -17,8 +17,8 @@ def generate_heatmap(url: str, elements_df: pd.DataFrame, output_path: str = "sm
     driver.get(url)
 
     # Full height screenshot
-    total_height = driver.execute_script("return document.body.scrollHeight")
-    driver.set_window_size(1920, total_height)
+    # total_height = driver.execute_script("return document.body.scrollHeight")
+    # driver.set_window_size(1920, total_height)
     png = driver.get_screenshot_as_png()
     driver.quit()
 

@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from pipeline import run_pipeline  
+from backend.pipeline import run_pipeline  
 app = Flask(__name__)
 
 @app.route('/submit', methods=['POST'])
@@ -12,8 +12,9 @@ def submit():
     if not url:
         return jsonify({'error': 'Missing url'}), 400
     # Call pipeline function
-    run_pipeline(url)
-    heatmap_path = f"heatmap/smooth_heatmap.png"
+    metrics=run_pipeline(url)
+    heatmap_path = f"../smooth_heatmap.png"
+    return jsonify(metrics), 200, {'X-Heatmap-Path': heatmap_path}
     #mazel appel l LLM
 
 if __name__ == '__main__':
