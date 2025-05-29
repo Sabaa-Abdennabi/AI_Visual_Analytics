@@ -1,0 +1,11 @@
+pandas
+selenium
+matplotlib
+Pillow
+scipy
+pyarrow
+playwright==1.51.0
+flask
+joblib
+numpy
+scikit-learn
