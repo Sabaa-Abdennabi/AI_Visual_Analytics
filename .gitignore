@@ -6,9 +6,11 @@ web_scrapper/readParquet.py
 web_scrapper/scraped_parquet
 web_scrapper/merged_parquet
 .env
+web_scrapper/split.py
 .venv
 web_scrapper/merged_parquet
 web_scrapper/scraped_parquet
 last_urls.csv
+Dashboard_front/node_modules
 model_click.pkl
 model_view.pkl

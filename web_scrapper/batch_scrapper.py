@@ -12,8 +12,8 @@ def process_url(url):
         print(f"❌ Error scraping {url}: {e}")
 
 if __name__ == "__main__":
-    df = pd.read_csv("extrait.csv")
+    df = pd.read_csv("urls_removed.csv")
     urls = df["PageURL"].dropna().unique().tolist()
 
-    with Pool(3) as pool:
+    with Pool(10) as pool:
         pool.map(process_url, urls)
