@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright
-from custom_parser import extract_elements
-from save_utils import save_as_parquet
+from web_scrapper.custom_parser import extract_elements
+from web_scrapper.save_utils import save_as_parquet
 
 def scrape(url, headless=True, delay=3):
     try:
@@ -21,11 +21,12 @@ def scrape(url, headless=True, delay=3):
             print('end rendering start extracting')
             elements = extract_elements(page)
             print('end extracting and stt parqueting')
-            save_as_parquet(elements, url)
+            path=save_as_parquet(elements, url)
             print('end parqueting')
 
             context.close()
             browser.close()
+            return path
 
     except Exception as e:
         print(f"❌ Error scraping {url}: {e}")
