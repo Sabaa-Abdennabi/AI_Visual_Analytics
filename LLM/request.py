@@ -48,8 +48,8 @@ def generate_recommandations(image_path,message):
 
     print(chat_completion.choices[0].message.content)
     return chat_completion.choices[0].message.content
-if __name__ == "__main__":
-    image_path = "./zara.png"
-    message = "Please provide UI/UX recommendations based on the image."
-    recommendations = generate_recommandations(image_path, message)
-    print(recommendations)
+# if __name__ == "__main__":
+#     image_path = "./zara.png"
+#     message = "Please provide UI/UX recommendations based on the image."
+#     recommendations = generate_recommandations(image_path, message)
+#     print(recommendations)
