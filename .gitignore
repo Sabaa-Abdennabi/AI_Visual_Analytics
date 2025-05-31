@@ -16,3 +16,4 @@ model_view.pkl
 scraped_parquet/
 model_view_xgb_noscale.pkl
 backend/modele_random_forest2.pkl
+LLM/.env
