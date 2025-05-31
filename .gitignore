@@ -14,5 +14,5 @@ last_urls.csv
 model_click.pkl
 model_view.pkl
 scraped_parquet/
-mosel_view_xgb_noscale.pkl
+model_view_xgb_noscale.pkl
 backend/modele_random_forest2.pkl
