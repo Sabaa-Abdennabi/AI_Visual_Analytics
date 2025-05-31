@@ -9,3 +9,6 @@ flask
 joblib
 numpy
 scikit-learn
+groq
+dotenv
+flask-cors
