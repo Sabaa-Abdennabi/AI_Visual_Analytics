@@ -37,6 +37,10 @@ def extract_metrics(df):
         "percent_viewed": percent_viewed,
         "avg_area": float(df["area"].mean()) if "area" in df else None,
     }
+def Moyenne_Duration(df):
+    if "view_duration" in df:
+        return df["view_duration"].mean()
+    return 0
 
 def run_pipeline(url):
     # 1. Scrape the URL (saves .parquet in scraped_parquet)
@@ -82,9 +86,10 @@ def run_pipeline(url):
         [float(row["x"]), float(row["y"]), float(row["view_duration"])]
         for _, row in df_valid.iterrows()
     ]
+    mean_duration = Moyenne_Duration(df2)
     # 7. Call generate_heatmap
     heatmapPath=generate_heatmap(url,raw_points)
-    return metrics,heatmapPath
+    return metrics,mean_duration,heatmapPath
 
 if __name__ == "__main__":
      # Example usage
