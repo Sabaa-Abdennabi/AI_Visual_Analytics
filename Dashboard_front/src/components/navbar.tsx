@@ -23,21 +23,7 @@ const Navbar = () => {
             </a>
             <div className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-orange-500 rounded-full"></div>
           </div>
-
-          <a
-            href="#"
-            className="text-sm md:text-base text-gray-700 hover:text-orange-500 transition-colors duration-200"
-          >
-            About
-          </a>
-          
-          {/* Bouton Login */}
-          <div className="relative group">
-            <div className="bg-orange-500 px-2 py-1 md:px-3 md:py-1 rounded-sm shadow-md hover:bg-orange-600 transition-colors duration-200">
-              <span className="text-xs md:text-sm text-white font-medium">Log In</span>
-              <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 md:w-2 md:h-2 bg-amber-300 rounded-sm"></div>
-            </div>
-          </div>
+        
         </div>
       </div>
     </nav>

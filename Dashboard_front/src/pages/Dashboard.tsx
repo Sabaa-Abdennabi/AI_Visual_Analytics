@@ -1,34 +1,88 @@
-function Dashbaord() {
-  const scoreGroups = [
-    [
-      { label: "Total", value: 8.8 },
-      { label: "Navigation", value: 8.9 },
-      { label: "Accessibilité", value: 8.8 },
-      { label: "Engagement", value: 5.4 },
-    ],
-  ];
+import { useNavigate } from "react-router-dom";
+import { useReport } from "../context/ReportContext";
+
+function Dashboard() {
+  const { report } = useReport();
+  const navigate = useNavigate(); // Add this line
+
+  function parseRecommendations(text: string) {
+    // Split into lines and trim
+    const lines = text
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean);
+    const sections: any[] = [];
+    let currentSection: any = { heading: "", type: "p", items: [] };
+
+    lines.forEach((line) => {
+      // Heading: line ends with ":" or is all uppercase/capitalized
+      if (
+        /^[A-Z][A-Za-z0-9\s]+:$/.test(line) ||
+        /^[A-Z][A-Za-z0-9\s]+$/.test(line)
+      ) {
+        if (currentSection.items.length) sections.push(currentSection);
+        currentSection = {
+          heading: line.replace(/:$/, ""),
+          type: "p",
+          items: [],
+        };
+      } else if (/^\*\*(.+)\*\*$/.test(line)) {
+        // Bold line, treat as subheading or important item
+        if (currentSection.items.length) sections.push(currentSection);
+        currentSection = {
+          heading: line.replace(/^\*\*|\*\*$/g, ""),
+          type: "p",
+          items: [],
+        };
+      } else {
+        currentSection.items.push(line);
+      }
+    });
+    if (currentSection.items.length) sections.push(currentSection);
+    return sections;
+  }
+
+  // Fallback if no report is loaded
+  if (!report) {
+    return (
+      <div className="p-8">No report data. Please generate a report first.</div>
+    );
+  }
+
+  // Prepare stats from backend response
   const stats = [
     {
-      value: "8.7",
-      label: "Average Time Predicted",
+      value: report.total_elements ?? "-",
+      label: "Total Elements",
       color: "text-blue-600",
     },
     {
-      value: "92%",
-      label: "Buttons clicked",
+      value:
+        report.percent_viewed !== undefined
+          ? `${report.percent_viewed.toFixed(2)}%`
+          : "-",
+      label: "Elements Viewed",
       color: "text-green-600",
     },
     {
-      value: "4.5s",
-      label: "Scroll Depth",
+      value:
+        report.percent_clicked !== undefined
+          ? `${report.percent_clicked.toFixed(2)}%`
+          : "-",
+      label: "Elements Clicked",
       color: "text-orange-500",
     },
   ];
-  const recommendations = [
-    "Improve navigation clarity and reduce visual clutter to enhance user engagement.",
-    "Consider increasing contrast for better accessibility.",
-    "Optimize button placement for higher conversion.",
-  ];
+
+  // Split recommendations into lines or paragraphs
+  const parsedRecommendations = report.recommendations
+    ? parseRecommendations(report.recommendations)
+    : [];
+
+  // If you want to show the heatmap dynamically, you can use a path from the backend if available
+  // For now, we use the static path as in your backend
+  const heatmapPath = "/assets/heatmap.png";
+
   return (
     <div>
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -51,14 +105,13 @@ function Dashbaord() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
+                    clipRule="evenodd"
+                    fillRule="evenodd"
                     d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
                   ></path>
                 </svg>
               </button>
               <div className="flex items-center space-x-3">
-                {/* Logo avec carreaux imbriqués */}
                 <div className="relative w-6 h-6">
                   <div className="absolute inset-0 bg-orange-500 rounded-sm shadow-md"></div>
                   <div className="absolute inset-1 bg-amber-300 rounded-sm"></div>
@@ -66,24 +119,7 @@ function Dashbaord() {
                 <span className="font-bold text-lg">AI Visual Analytic</span>
               </div>
             </div>
-            <div className="flex items-center">
-              <div className="flex items-center ms-3">
-                <div>
-                  <button
-                    type="button"
-                    className="text-sm md:text-base text-gray-700 hover:text-orange-500 transition-colors duration-200"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
-                  >
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-16 h-16 rounded-full"
-                      src="../src/assets/profile.jpg"
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </nav>
@@ -114,9 +150,9 @@ function Dashbaord() {
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-l md:text-base text-gray-700 hover:text-orange-500 transition-colors duration-200 group"
+              <button
+                onClick={() => navigate("/history")}
+                className="flex items-center p-2 text-l md:text-base text-gray-700 hover:text-orange-500 transition-colors duration-200 group w-full text-left"
               >
                 <svg
                   className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -128,50 +164,8 @@ function Dashbaord() {
                   <path d="M10 2a8 8 0 1 0 8 8h-1.5a6.5 6.5 0 1 1-2.1-4.6l-1.4 1.4V4h4.5l-1.4 1.4A8 8 0 0 0 10 2zm1 5v4l3 1" />
                 </svg>
                 <span className="flex-1 ms-3 whitespace-nowrap">History</span>
-              </a>
+              </button>
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-l md:text-base text-gray-700 hover:text-orange-500 transition-colors duration-200 group"
-              >
-                <svg
-                  className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 18 18"
-                >
-                  <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
-                </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">Settings</span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-l md:text-base text-gray-700 hover:text-orange-500 transition-colors duration-200 group"
-              >
-                <svg
-                  className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 18 16"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
-                  />
-                </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">Log Out</span>
-              </a>
-            </li>
-            <li></li>
           </ul>
         </div>
       </aside>
@@ -185,7 +179,7 @@ function Dashbaord() {
                 Predicted Heatmap
               </p>
               <img
-                src="../src/assets/heatmap.png"
+                src={heatmapPath}
                 alt="Heatmap Prediction"
                 className="object-contain h-full w-full rounded"
               />
@@ -193,64 +187,71 @@ function Dashbaord() {
             <div className="col-span-1 p-4 flex flex-col items-center justify-center h-96 rounded-sm bg-gray-50 dark:bg-gray-800">
               <div className="flex items-center mb-5">
                 <p className="ms-2 font-medium text-gray-900 dark:text-white">
-                  Excellent
+                  Metrics
                 </p>
               </div>
               <div className="gap-8 sm:grid  w-full">
-                {scoreGroups.map((group, i) => (
-                  <div key={i}>
-                    {group.map((score) => (
-                      <dl key={score.label}>
-                        <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                          {score.label}
-                        </dt>
-                        <dd className="flex items-center mb-3">
-                          <div className="w-full bg-gray-200 rounded-sm h-2.5 dark:bg-gray-700 me-2">
-                            <div
-                              className="bg-blue-600 h-2.5 rounded-sm dark:bg-blue-500"
-                              style={{ width: `${score.value * 10}%` }}
-                            ></div>
-                          </div>
-                          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                            {score.value}
-                          </span>
-                        </dd>
-                      </dl>
-                    ))}
+                {stats.map((stat, idx) => (
+                  <div key={stat.label}>
+                    <dl>
+                      <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        {stat.label}
+                      </dt>
+                      <dd className="flex items-center mb-3">
+                        <span className={`text-2xl font-bold ${stat.color}`}>
+                          {stat.value}
+                        </span>
+                      </dd>
+                    </dl>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Stats Overview */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            {stats.map((stat, idx) => (
-              <div
-                key={stat.label}
-                className="flex flex-col items-center justify-center rounded bg-white dark:bg-gray-800 shadow p-4"
-              >
-                <span className={`text-3xl font-bold ${stat.color}`}>
-                  {stat.value}
-                </span>
-                <span className="text-gray-500 dark:text-gray-400">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
           {/* Recommendation Part */}
           <div className="mb-6 p-4 rounded bg-blue-50 dark:bg-gray-900 border-l-4 border-blue-400">
-            <h3 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">
+            <h3 className="font-semibold py-6 text-blue-700 dark:text-blue-300 mb-2">
               Recommendations
             </h3>
-            <ul className="list-disc pl-5 space-y-1">
-              {recommendations.map((rec, idx) => (
-                <li key={idx} className="text-gray-700 dark:text-gray-200">
-                  {rec}
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-4">
+              {/* Render recommendations as a styled ordered list */}
+              <ol className="list-decimal pl-6 space-y-3">
+                {parsedRecommendations
+                  .flatMap((section) => section.items)
+                  .filter((item) => /^\d+\./.test(item))
+                  .map((item, idx) => (
+                    <li
+                      key={idx}
+                      className=" dark:bg-gray-800 rounded px-4 py-2 shadow-sm border border-blue-100 dark:border-gray-700"
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: item
+                            .replace(/^\d+\.\s*/, "")
+                            .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"),
+                        }}
+                      />
+                    </li>
+                  ))}
+              </ol>
+
+              {/* Show conclusion if present */}
+              {parsedRecommendations.length > 1 && (
+                <div className="mt-6 text-gray-700 dark:text-gray-300 italic">
+                  {parsedRecommendations
+                    .flatMap((section) => section.items)
+                    .filter(
+                      (item) =>
+                        !/^\d+\./.test(item) &&
+                        item !== parsedRecommendations[0].items[0]
+                    )
+                    .map((item, idx) => (
+                      <p>{item}</p>
+                    ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -258,4 +259,4 @@ function Dashbaord() {
   );
 }
 
-export default Dashbaord;
+export default Dashboard;

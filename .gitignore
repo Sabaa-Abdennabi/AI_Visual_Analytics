@@ -14,3 +14,5 @@ last_urls.csv
 Dashboard_front/node_modules
 model_click.pkl
 model_view.pkl
+LLM/.env
+scraped_parquet
