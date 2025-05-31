@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
 from backend.pipeline import run_pipeline  
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)  # Autorise toutes les origines (pour le dev)
 
 @app.route('/submit', methods=['POST'])
 def submit():

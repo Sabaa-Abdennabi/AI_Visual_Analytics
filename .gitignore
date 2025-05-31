@@ -9,6 +9,9 @@ web_scrapper/merged_parquet
 .venv
 web_scrapper/merged_parquet
 web_scrapper/scraped_parquet
+web_scrapper/merged_parquet/
 last_urls.csv
 model_click.pkl
 model_view.pkl
+scraped_parquet/
+mosel_view_xgb_noscale.pkl

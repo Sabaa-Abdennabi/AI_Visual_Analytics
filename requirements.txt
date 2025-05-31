@@ -9,3 +9,5 @@ flask
 joblib
 numpy
 scikit-learn
+opencv-python
+flask-cors
