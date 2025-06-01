@@ -6,6 +6,7 @@ from web_scrapper.scraper import scrape
 from heatmap.generate_heatmap import generate_heatmap
 from backend.preprocessing import preprocess_dataframe
 from backend.preprocessingHeatmap import preprocess_heatmap
+from LLM.request import generate_recommandations
 def url_to_hash(url):
     return hashlib.md5(url.encode()).hexdigest()[:10]
 
@@ -44,7 +45,8 @@ def Moyenne_Duration(df):
 
 def run_pipeline(url):
     # 1. Scrape the URL (saves .parquet in scraped_parquet)
-    path=scrape(url)
+    #path=scrape(url)
+    path="scraped_parquet/3f7b7021cd.parquet"
     if not os.path.exists(path):
         raise FileNotFoundError("No scraped .parquet file found for this URL.")
     
@@ -89,9 +91,34 @@ def run_pipeline(url):
     mean_duration = Moyenne_Duration(df2)
     # 7. Call generate_heatmap
     heatmapPath=generate_heatmap(url,raw_points)
-    return metrics,mean_duration,heatmapPath
+    metrics_str = "\n".join([f"{k}: {v}" for k, v in metrics.items()])
+    feature_cols = [col for col in df.columns if col not in [
+        "was_viewed", "was_clicked"]]
+    df_features = df[feature_cols]
+    summary = df_features.describe().loc[["mean", "std", "min", "max"]].to_string()
 
-if __name__ == "__main__":
-     # Example usage
-     url = "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal"
-     run_pipeline(url)
+    sample = df.head(5).to_string(index=False)
+
+    message = (
+        f"The website at {url} was scraped and analyzed.\n\n"
+        f"Metrics summary:\n{metrics_str}\n\n"
+        "Dataframe feature summary (excluding targets):\n"
+        f"{summary}\n\n"
+        "Sample of the first 10 elements with their features and predicted interactions (was_viewed, was_clicked):\n"
+        f"{sample}\n\n"
+        "Please provide UI/UX recommendations based on the heatmap, the metrics, the dataframe summary, and the element details above."
+    )
+
+    recommendations = generate_recommandations(
+        image_path=heatmapPath,
+        message=message
+    )
+    metrics["recommendations"] = recommendations
+    metrics["mean_duration"] = mean_duration
+    metrics["heatmap_path"] = heatmapPath
+    return metrics
+
+# if __name__ == "__main__":
+#      # Example usage
+#      url = "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal"
+#      run_pipeline(url)

@@ -65,7 +65,8 @@ def preprocess_heatmap(df):
     backend_dir = os.path.dirname(__file__)
     scaler_x = joblib.load(os.path.join(backend_dir, "scaler_x.pkl"))
     df[layout_features] = scaler_x.transform(df[layout_features])
-
+    
+    
     # Forçage des colonnes tag_* manquantes
     expected_tags = ['content', 'interactive', 'media', 'other', 'structure', 'table']
     for tag_col in expected_tags:

@@ -23,7 +23,6 @@ def generate_recommandations(image_path,message):
     def encode_image(image_path):
         with open(image_path, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode('utf-8')
-    image_path = "C:/Users/DELL/Desktop/GL4/PFA/LLM/zara.png"
 
     # Getting the base64 string
     base64_image = encode_image(image_path)
@@ -48,8 +47,8 @@ def generate_recommandations(image_path,message):
 
     print(chat_completion.choices[0].message.content)
     return chat_completion.choices[0].message.content
-if __name__ == "__main__":
-    image_path = "./zara.png"
-    message = "Please provide UI/UX recommendations based on the image."
-    recommendations = generate_recommandations(image_path, message)
-    print(recommendations)
+# if __name__ == "__main__":
+#     image_path = "./zara.png"
+#     message = "Please provide UI/UX recommendations based on the image."
+#     recommendations = generate_recommandations(image_path, message)
+#     print(recommendations)

@@ -4,9 +4,11 @@ import { useReport } from "../context/ReportContext";
 function Dashboard() {
   const { report } = useReport();
   const navigate = useNavigate(); // Add this line
-
+  const srcImage =
+    report?.heatmap_path || "/assets/fr_wikipedia_org_3f7b7021.png"; // Fallback image path
+  // Split into lines and trim
+  console.log("Report data:", report);
   function parseRecommendations(text: string) {
-    // Split into lines and trim
     const lines = text
       .split("\n")
       .map((line) => line.trim())
@@ -72,6 +74,14 @@ function Dashboard() {
       label: "Elements Clicked",
       color: "text-orange-500",
     },
+    {
+      value:
+        report.mean_duration !== undefined
+          ? `${report.mean_duration.toFixed(2)} ms`
+          : "-",
+      label: "durée moyenne de vue",
+      color: "text-red-600",
+    },
   ];
 
   // Split recommendations into lines or paragraphs
@@ -81,7 +91,6 @@ function Dashboard() {
 
   // If you want to show the heatmap dynamically, you can use a path from the backend if available
   // For now, we use the static path as in your backend
-  const heatmapPath = "/assets/heatmap.png";
 
   return (
     <div>
@@ -119,7 +128,6 @@ function Dashboard() {
                 <span className="font-bold text-lg">AI Visual Analytic</span>
               </div>
             </div>
-
           </div>
         </div>
       </nav>
@@ -174,15 +182,18 @@ function Dashboard() {
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
           <div className="grid grid-cols-3 gap-4 m-4">
             {/* Heatmap Prediction Image (2/3 width) */}
-            <div className="col-span-2 flex p-4  flex-col items-start justify-center h-96 rounded-sm bg-gray-50 dark:bg-gray-800">
+            <div className="col-span-2 flex p-4 flex-col items-start justify-center h-96 rounded-sm bg-gray-50 dark:bg-gray-800">
               <p className="m-2 text-left font-medium text-gray-900 dark:text-white">
                 Predicted Heatmap
               </p>
-              <img
-                src={heatmapPath}
-                alt="Heatmap Prediction"
-                className="object-contain h-full w-full rounded"
-              />
+              <div className="w-full h-[900px] overflow-auto rounded border">
+                <img
+                  src="../../src/assets/fr_wikipedia_org_3f7b7021.png"
+                  alt="Heatmap Prediction"
+                  className="w-full"
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
             </div>
             <div className="col-span-1 p-4 flex flex-col items-center justify-center h-96 rounded-sm bg-gray-50 dark:bg-gray-800">
               <div className="flex items-center mb-5">
@@ -191,7 +202,7 @@ function Dashboard() {
                 </p>
               </div>
               <div className="gap-8 sm:grid  w-full">
-                {stats.map((stat, idx) => (
+                {stats.map((stat) => (
                   <div key={stat.label}>
                     <dl>
                       <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -246,7 +257,7 @@ function Dashboard() {
                         !/^\d+\./.test(item) &&
                         item !== parsedRecommendations[0].items[0]
                     )
-                    .map((item, idx) => (
+                    .map((item) => (
                       <p>{item}</p>
                     ))}
                 </div>

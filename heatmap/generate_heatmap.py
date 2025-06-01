@@ -148,7 +148,7 @@ def generate_heatmap(url: str, raw_points):
     domain = parsed.netloc.replace('.', '_')
     url_hash = hashlib.md5(url.encode("utf-8")).hexdigest()[:8]
     filename = f"{domain}_{url_hash}.png"
-    output_dir = "heatmap"
+    output_dir = "../Dashboard_front/src/assets"
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, filename)
 

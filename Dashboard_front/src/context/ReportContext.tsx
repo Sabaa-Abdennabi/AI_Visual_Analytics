@@ -5,7 +5,9 @@ type ReportData = {
   percent_clicked?: number;
   percent_viewed?: number;
   avg_area?: number;
+  mean_duration?: number;
   recommendations?: string;
+  heatmap_path?: string;
 };
 
 const ReportContext = createContext<{

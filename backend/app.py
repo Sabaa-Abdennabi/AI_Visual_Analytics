@@ -15,9 +15,7 @@ def submit():
         return jsonify({'error': 'Missing url'}), 400
     # Call pipeline function
     metrics=run_pipeline(url)
-    heatmap_path = f"../smooth_heatmap.png"
-    return jsonify(metrics), 200, {'X-Heatmap-Path': heatmap_path}
-    #mazel appel l LLM
+    return jsonify(metrics), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
