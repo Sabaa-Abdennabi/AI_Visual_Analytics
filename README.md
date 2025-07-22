@@ -2,7 +2,7 @@
 
 **In an age where user attention is fleeting, understanding behavior is key to designing effective digital experiences.**
 
-This insight led our team — **Sabaa Abdennabi**, **Jihen Mkhinini**, and **Arij Thabet ** — to develop **AI Visual Analytics**, our end-of-year software engineering project. It bridges the gap between user behavior and data‑driven design.
+This insight led our team — **Sabaa Abdennabi**, **Jihen Mkhinini**, and **Arij Thabet** — to develop **AI Visual Analytics**, our end-of-year software engineering project. It bridges the gap between user behavior and data‑driven design.
 
 The project was made possible through the invaluable guidance of **Dr. Hajer Taktak**, whose mentorship shaped every stage of our work.
 
